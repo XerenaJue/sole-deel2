@@ -18,15 +18,15 @@ public class Klant {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column
+	@Column(nullable = false)
 	private long klant_id;
-	@Column
+	@Column(nullable = false)
 	private String voornaam;
-	@Column
+	@Column(nullable = false)
 	private String achternaam;
 	@Column
 	private String tussenvoegsel;
-	@Column
+	@Column(nullable = false)
 	private String email;
 	
 	@OneToMany(cascade = CascadeType.ALL, targetEntity = Bestelling.class, mappedBy = "klant", orphanRemoval = true, fetch = FetchType.LAZY)

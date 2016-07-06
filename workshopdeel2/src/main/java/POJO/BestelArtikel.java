@@ -15,15 +15,15 @@ public class BestelArtikel {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column
+	@Column(nullable = false)
 	private long bestelling_artikel_id;
 
 	@ManyToOne
-	@JoinColumn(name = "artikel_id")
+	@JoinColumn(name = "artikel_artikel_id", nullable = false)
 	private Artikel artikel;
 
 	@ManyToOne
-	@JoinColumn(name = "bestelling_id")
+	@JoinColumn(name = "bestelling_bestelling_id", nullable = false)
 	private Bestelling bestelling;
 
 	@Column

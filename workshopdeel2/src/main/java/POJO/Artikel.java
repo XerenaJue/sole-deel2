@@ -13,7 +13,7 @@ public class Artikel {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column
+	@Column(nullable = false)
 	private long artikel_id;
 	@Column
 	private String artikel_nummer;

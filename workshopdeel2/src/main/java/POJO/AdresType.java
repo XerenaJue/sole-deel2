@@ -15,7 +15,7 @@ public class AdresType {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column
+	@Column(nullable = false)
 	private long adres_type_id;
 	
 	@Enumerated(EnumType.STRING)

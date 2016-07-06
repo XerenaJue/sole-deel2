@@ -16,22 +16,22 @@ import javax.persistence.Table;
 public class Betaling {
 
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column
+	@Column(nullable = false)
 	private long betaling_id;
 	
 	@Column
 	private java.util.Date betaalDatum;
 	
-	@Enumerated(EnumType.STRING)
-	@Column(name = "betaalwijze_type")
-	private BetaalwijzeType betalingswijze;
+	@ManyToOne
+    @JoinColumn(name="betaalwijze_betaalwijze_id", nullable=false, insertable=false, updatable=false)
+	private Betaalwijze betalingswijze;
 	
 	@ManyToOne
-	@JoinColumn(name = "klant_id")
+	@JoinColumn(name = "klant_klant_id", nullable = false)
 	private Klant klant;
 	
 	@ManyToOne
-	@JoinColumn(name = "factuur_id")
+	@JoinColumn(name = "factuur_id", nullable = false)
 	private Factuur factuur;
 	
 	@Column
@@ -53,11 +53,11 @@ public class Betaling {
 		this.betaalDatum = betaalDatum;
 	}
 
-	public BetaalwijzeType getBetalingswijze() {
+	public Betaalwijze getBetalingswijze() {
 		return betalingswijze;
 	}
 
-	public void setBetalingswijze(BetaalwijzeType betalingswijze) {
+	public void setBetalingswijze(Betaalwijze betalingswijze) {
 		this.betalingswijze = betalingswijze;
 	}
 

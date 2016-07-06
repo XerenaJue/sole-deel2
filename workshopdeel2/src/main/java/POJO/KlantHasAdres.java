@@ -16,19 +16,19 @@ import javax.persistence.Table;
 public class KlantHasAdres {
 
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column
+	@Column(nullable = false)
 	private long klant_has_adres_id;
 	
 	@ManyToOne
-	@JoinColumn(name = "klant_id")
+	@JoinColumn(name = "klant_klant_id", nullable = false)
 	private Klant klant;
 	
 	@ManyToOne
-	@JoinColumn(name = "adres_id")
+	@JoinColumn(name = "adres_adres_id", nullable = false)
 	private Adres adres;
 	
 	@Enumerated(EnumType.STRING)
-	@JoinColumn(name = "adres_type_id")
+	@JoinColumn(name = "adres_adres_type_id", nullable = false)
 	private AdresTypeType adresType;
 
 	public long getKlant_has_adres_id() {

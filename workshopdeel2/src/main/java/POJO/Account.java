@@ -15,7 +15,7 @@ public class Account {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column
+	@Column(nullable = false)
 	private long account_id;
 	
 	@Column
@@ -25,7 +25,7 @@ public class Account {
 	private java.util.Date create_datum;
 	
 	@ManyToOne
-	@JoinColumn(name = "klant_id")
+	@JoinColumn(name = "klant_id", nullable = false)
 	private Klant klant;
 
 	public long getAccount_id() {

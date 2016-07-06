@@ -15,7 +15,7 @@ public class Betaalwijze {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column
+	@Column(nullable = false)
 	private long betaalwijze_id;
 	
 	@Enumerated(EnumType.STRING)

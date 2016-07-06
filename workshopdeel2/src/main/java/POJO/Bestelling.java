@@ -19,7 +19,7 @@ public class Bestelling {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column
+	@Column(nullable = false)
 	private long bestelling_id;
 
 	@Column
@@ -35,7 +35,7 @@ public class Bestelling {
 	private Set<Factuur> factuurSet;
 
 	@ManyToOne
-	@JoinColumn(name = "klant_id")
+	@JoinColumn(name = "klant_klant_id", nullable = false)
 	private Klant klant;
 
 	public long getBestelling_id() {

@@ -18,7 +18,7 @@ import javax.persistence.Table;
 public class Factuur {
 
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column
+	@Column(nullable = false)
 	private long factuur_id;
 	
 	@Column
@@ -31,7 +31,7 @@ public class Factuur {
 	private Set<Betaling> betalingSet;
 	
 	@ManyToOne
-	@JoinColumn(name = "bestelling_id")
+	@JoinColumn(name = "bestelling_bestelling_id", nullable = false)
 	private Bestelling bestelling;
 
 	public long getFactuur_id() {
