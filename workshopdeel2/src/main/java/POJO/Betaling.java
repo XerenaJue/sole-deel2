@@ -2,8 +2,6 @@ package POJO;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -49,8 +47,8 @@ public class Betaling {
 		return betaalDatum;
 	}
 
-	public void setBetaalDatum(java.util.Date betaalDatum) {
-		this.betaalDatum = betaalDatum;
+	public void setBetaalDatum() {
+		this.betaalDatum = new java.util.Date();
 	}
 
 	public Betaalwijze getBetalingswijze() {

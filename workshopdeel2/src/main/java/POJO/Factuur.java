@@ -1,5 +1,6 @@
 package POJO;
 
+import java.util.Random;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -46,16 +47,25 @@ public class Factuur {
 		return factuur_nummer;
 	}
 
-	public void setFactuur_nummer(String factuur_nummer) {
-		this.factuur_nummer = factuur_nummer;
+	public void setFactuur_nummer() {
+		
+		int length = 10;
+		Random random = new Random();
+		String characters = "ABCDEFGHIJLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
+		StringBuilder sb = new StringBuilder();
+		
+		for (int i = 0; i < length; i++) {
+			sb.append(characters.charAt(random.nextInt(characters.length())));
+		}
+		factuur_nummer = sb.toString();
 	}
 
 	public java.util.Date getFactuurDatum() {
 		return factuurDatum;
 	}
 
-	public void setFactuurDatum(java.util.Date factuurDatum) {
-		this.factuurDatum = factuurDatum;
+	public void setFactuurDatum() {
+		this.factuurDatum = new java.util.Date();
 	}
 
 	public Set<Betaling> getBetalingSet() {

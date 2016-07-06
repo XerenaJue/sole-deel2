@@ -48,8 +48,8 @@ public class Account {
 		return create_datum;
 	}
 
-	public void setCreate_datum(java.util.Date create_datum) {
-		this.create_datum = create_datum;
+	public void setCreate_datum() {
+		this.create_datum = new java.util.Date();
 	}
 
 	public Klant getKlant() {

@@ -1,5 +1,7 @@
 package POJO;
 
+import java.util.Date;
+import java.util.Random;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -50,16 +52,25 @@ public class Bestelling {
 		return bestel_nummer;
 	}
 
-	public void setBestel_nummer(String bestel_nummer) {
-		this.bestel_nummer = bestel_nummer;
+	public void setBestel_nummer() {
+		
+		int length = 10;
+		Random random = new Random();
+		String characters = "ABCDEFGHIJLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
+		StringBuilder sb = new StringBuilder();
+		
+		for (int i = 0; i < length; i++) {
+			sb.append(characters.charAt(random.nextInt(characters.length())));
+		}
+		bestel_nummer = sb.toString();
 	}
 
 	public java.util.Date getBesteldDatum() {
 		return besteldDatum;
 	}
 
-	public void setBesteldDatum(java.util.Date besteldDatum) {
-		this.besteldDatum = besteldDatum;
+	public void setBesteldDatum() {
+		this.besteldDatum = new Date();
 	}
 
 	public Klant getKlant() {

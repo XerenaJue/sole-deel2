@@ -3,14 +3,14 @@
 		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
 		"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
-    <session-factory>
-        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="hibernate.connection.password">doei</property>
-        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/workshopdeel2</property>
-        <property name="hibernate.connection.username">hallo</property>
-        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+	<session-factory>
+		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="hibernate.connection.password">doei</property>
+		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/workshopdeel2</property>
+		<property name="hibernate.connection.username">hallo</property>
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
         
-        <!-- Disable the second-level cache  -->
+        <!-- Disable the second-level cache -->
 		<property name="cache.provider_class">org.hibernate.cache.internal.NoCacheProvider</property>
 
 		<!-- Echo all executed SQL to stdout -->
@@ -18,5 +18,17 @@
 
 		<!-- Drop and re-create the database schema on startup -->
 		<property name="hibernate.hbm2ddl.auto">update</property>
-    </session-factory>
+
+		<mapping class="POJO.Account" />
+		<mapping class="POJO.Adres" />
+		<mapping class="POJO.AdresType" />
+		<mapping class="POJO.Artikel" />
+		<mapping class="POJO.Bestelling" />
+		<mapping class="POJO.Betaalwijze" />
+		<mapping class="POJO.Betaling" />
+		<mapping class="POJO.Factuur" />
+		<mapping class="POJO.Klant" />
+		<mapping class="POJO.BestelArtikel" />
+		<mapping class="POJO.KlantHasAdres" />
+	</session-factory>
 </hibernate-configuration>
