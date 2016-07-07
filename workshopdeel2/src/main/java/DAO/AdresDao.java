@@ -3,10 +3,9 @@ package DAO;
 import java.util.List;
 
 import Helper.HibernateUtil;
-import Interface.AdresInterface;
 import POJO.Adres;
 
-public class AdresDaoHibernate implements AdresInterface {
+public class AdresDao {
 	
 	HibernateUtil util = new HibernateUtil();
 
