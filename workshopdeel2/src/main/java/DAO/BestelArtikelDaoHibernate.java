@@ -3,44 +3,45 @@ package DAO;
 import java.util.List;
 
 import Helper.HibernateUtil;
+import POJO.BestelArtikel;
 
 public class BestelArtikelDaoHibernate {
 	
 	HibernateUtil util = new HibernateUtil();
 	
-	public void save(BestelArtikelDaoHibernate bestelArtikel) {
+	public void save(BestelArtikel bestelArtikel) {
 		util.openCurrentSession();
 		util.getCurrentSession().save(bestelArtikel);
 		util.closeCurrentSession();
 		
 	}
 
-	public void update(BestelArtikelDaoHibernate bestelArtikel) {
-		util.openCurrentSession();
+	public void update(BestelArtikel bestelArtikel) {
+		util.openSessionWithTransaction();
 		util.getCurrentSession().update(bestelArtikel);
-		util.closeCurrentSession();
+		util.closeSessionWithTransaction();
 		
 	}
 
-	public List<BestelArtikelDaoHibernate> findAll() {
+	public List<BestelArtikel> findAll() {
 		util.openCurrentSession();
-		List<BestelArtikelDaoHibernate> bestelArtikelen = (List<BestelArtikelDaoHibernate>)util.getCurrentSession().createQuery("FROM " + 
-				BestelArtikelDaoHibernate.class.getSimpleName()).list();
+		List<BestelArtikel> bestelArtikelen = (List<BestelArtikel>)util.getCurrentSession().createQuery("FROM " + 
+				BestelArtikel.class.getSimpleName()).list();
 		util.closeCurrentSession();
 		return bestelArtikelen;
 	}
 
-	public BestelArtikelDaoHibernate findByID(long id) {
+	public BestelArtikel findByID(long id) {
 		util.openCurrentSession();
-		BestelArtikelDaoHibernate adres = util.getCurrentSession().get(BestelArtikelDaoHibernate.class, id);
+		BestelArtikel adres = util.getCurrentSession().get(BestelArtikel.class, id);
 		util.closeCurrentSession();
 		return adres;
 	}
 
-	public void delete(BestelArtikelDaoHibernate bestelArtikel) {
-		util.openCurrentSession();
+	public void delete(BestelArtikel bestelArtikel) {
+		util.openSessionWithTransaction();
 		util.getCurrentSession().delete(bestelArtikel);
-		util.closeCurrentSession();
+		util.closeSessionWithTransaction();
 		
 	}
 

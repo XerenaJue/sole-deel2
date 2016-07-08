@@ -3,43 +3,44 @@ package DAO;
 import java.util.List;
 
 import Helper.HibernateUtil;
+import POJO.Artikel;
 
 public class ArtikelDaoHibernate {
 	
 	HibernateUtil util = new HibernateUtil();
 
-	public void save(ArtikelDaoHibernate artikelen) {
+	public void save(Artikel artikelen) {
 		util.openCurrentSession();
 		util.getCurrentSession().save(artikelen);
 		util.closeCurrentSession();
 		
 	}
 
-	public void update(ArtikelDaoHibernate artikelen) {
-		util.openCurrentSession();
+	public void update(Artikel artikelen) {
+		util.openSessionWithTransaction();
 		util.getCurrentSession().update(artikelen);
-		util.closeCurrentSession();
+		util.closeSessionWithTransaction();
 		
 	}
 
-	public List<ArtikelDaoHibernate> findAll() {
+	public List<Artikel> findAll() {
 		util.openCurrentSession();
-		List<ArtikelDaoHibernate> artikelen = (List<ArtikelDaoHibernate>)util.getCurrentSession().createQuery("FROM " + ArtikelDaoHibernate.class.getSimpleName()).list();
+		List<Artikel> artikelen = (List<Artikel>)util.getCurrentSession().createQuery("FROM " + Artikel.class.getSimpleName()).list();
 		util.closeCurrentSession();
 		return artikelen;
 	}
 
-	public ArtikelDaoHibernate findByID(long id) {
+	public Artikel findByID(long id) {
 		util.openCurrentSession();
-		ArtikelDaoHibernate artikel = util.getCurrentSession().get(ArtikelDaoHibernate.class, id);
+		Artikel artikel = util.getCurrentSession().get(Artikel.class, id);
 		util.closeCurrentSession();
 		return artikel;
 	}
 
-	public void delete(ArtikelDaoHibernate artikelen) {
-		util.openCurrentSession();
+	public void delete(Artikel artikelen) {
+		util.openSessionWithTransaction();
 		util.getCurrentSession().delete(artikelen);
-		util.closeCurrentSession();
+		util.closeSessionWithTransaction();
 		
 	}
 }

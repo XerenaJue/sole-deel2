@@ -17,9 +17,9 @@ public class FactuurDaoHibernate {
 	}
 
 	public void update(Factuur factuur) {
-		util.openCurrentSession();
+		util.openSessionWithTransaction();
 		util.getCurrentSession().update(factuur);
-		util.closeCurrentSession();
+		util.closeSessionWithTransaction();
 		
 	}
 
@@ -38,9 +38,9 @@ public class FactuurDaoHibernate {
 	}
 
 	public void delete(Factuur factuur) {
-		util.openCurrentSession();
+		util.openSessionWithTransaction();
 		util.getCurrentSession().delete(factuur);
-		util.closeCurrentSession();
+		util.closeSessionWithTransaction();
 		
 	}
 

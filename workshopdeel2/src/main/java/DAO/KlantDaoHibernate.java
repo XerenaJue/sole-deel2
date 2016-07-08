@@ -18,9 +18,9 @@ public class KlantDaoHibernate implements KlantInterface {
 	}
 
 	public void update(Klant klant) {
-		util.openCurrentSession();
+		util.openSessionWithTransaction();
 		util.getCurrentSession().update(klant);
-		util.closeCurrentSession();
+		util.closeSessionWithTransaction();
 	}
 
 	public List<Klant> findAll() {
@@ -38,9 +38,9 @@ public class KlantDaoHibernate implements KlantInterface {
 	}
 
 	public void delete(Klant klant) {
-		util.openCurrentSession();
+		util.openSessionWithTransaction();
 		util.getCurrentSession().delete(klant);
-		util.closeCurrentSession();
+		util.closeSessionWithTransaction();
 
 	}
 	

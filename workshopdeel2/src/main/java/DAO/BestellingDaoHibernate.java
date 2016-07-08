@@ -3,43 +3,44 @@ package DAO;
 import java.util.List;
 
 import Helper.HibernateUtil;
+import POJO.Bestelling;
 
 public class BestellingDaoHibernate {
 	
 	HibernateUtil util = new HibernateUtil();
 	
-	public void save(BestellingDaoHibernate bestelling) {
+	public void save(Bestelling bestelling) {
 		util.openCurrentSession();
 		util.getCurrentSession().save(bestelling);
 		util.closeCurrentSession();
 		
 	}
 
-	public void update(BestellingDaoHibernate bestelling) {
-		util.openCurrentSession();
+	public void update(Bestelling bestelling) {
+		util.openSessionWithTransaction();
 		util.getCurrentSession().update(bestelling);
-		util.closeCurrentSession();
+		util.closeSessionWithTransaction();
 		
 	}
 
-	public List<BestellingDaoHibernate> findAll() {
+	public List<Bestelling> findAll() {
 		util.openCurrentSession();
-		List<BestellingDaoHibernate> bestellingen = (List<BestellingDaoHibernate>)util.getCurrentSession().createQuery("FROM " + BestellingDaoHibernate.class.getSimpleName()).list();
+		List<Bestelling> bestellingen = (List<Bestelling>)util.getCurrentSession().createQuery("FROM " + Bestelling.class.getSimpleName()).list();
 		util.closeCurrentSession();
 		return bestellingen;
 	}
 
-	public BestellingDaoHibernate findByID(long id) {
+	public Bestelling findByID(long id) {
 		util.openCurrentSession();
-		BestellingDaoHibernate bestelling = util.getCurrentSession().get(BestellingDaoHibernate.class, id);
+		Bestelling bestelling = util.getCurrentSession().get(Bestelling.class, id);
 		util.closeCurrentSession();
 		return bestelling;
 	}
 
-	public void delete(BestellingDaoHibernate bestelling) {
-		util.openCurrentSession();
+	public void delete(Bestelling bestelling) {
+		util.openSessionWithTransaction();
 		util.getCurrentSession().delete(bestelling);
-		util.closeCurrentSession();
+		util.closeSessionWithTransaction();
 		
 	}
 

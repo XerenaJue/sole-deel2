@@ -7,6 +7,9 @@ import java.util.List;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.tool.hbm2ddl.SchemaExport;
 
+import DAO.AccountDaoHibernate;
+import DAO.AdresDao;
+import DAO.ArtikelDaoHibernate;
 import DAO.KlantDaoHibernate;
 import POJO.*;
 import Service.KlantService;
@@ -14,44 +17,45 @@ import Service.KlantService;
 public class Test {
 	
 	public static void main(String[] args) throws SQLException {
-		/*Configuration config = new Configuration();
-		
-		config.addAnnotatedClass(Klant.class);
-		config.addAnnotatedClass(Account.class);
-		config.addAnnotatedClass(Adres.class);
-		config.addAnnotatedClass(AdresType.class);
-		config.addAnnotatedClass(Artikel.class);
-		config.addAnnotatedClass(BestelArtikel.class);
-		config.addAnnotatedClass(Bestelling.class);
-		config.addAnnotatedClass(Betaalwijze.class);
-		config.addAnnotatedClass(Betaling.class);
-		config.addAnnotatedClass(Factuur.class);
-		config.addAnnotatedClass(KlantHasAdres.class);
-		
-		config.configure("hibernate.cfg.xml");
-		new SchemaExport(config).create(true, true);
-		*/
-		
-		Klant klant = new Klant();
-		klant.setVoornaam("B");
-		klant.setAchternaam("Jong");
-		klant.setEmail("b_Jong@gmail.com");
 		
 		KlantService klantService = new KlantService();
+		Klant klant = new Klant();
+		klant.setKlant_id(5);
+		klant.setVoornaam("G");
+		klant.setAchternaam("Maar");
+		klant.setTussenvoegsel("de");
+		klant.setEmail("gmaar@gmail.com");
+		
+		klantService.update(klant);
+		
 		List<Klant> klanten = klantService.findAll();
 		
 		for (Klant k : klanten) {
 			System.out.println(k);
 		}
-		Artikel artikel1 = new Artikel();
-		artikel1.setArtikel_nummer();
-		artikel1.setArtikel_omschrijving("Stoel");
-		artikel1.setArtikel_prijs(95.00);
+		System.out.println(klantService.findById(2));
 		
-		Artikel artikel2 = new Artikel();
-		artikel2.setArtikel_nummer();
-		artikel2.setArtikel_omschrijving("Bank");
-		artikel2.setArtikel_prijs(449.95);
+		Artikel artikel = new Artikel();
+		artikel.setArtikel_id(6);
+		artikel.setArtikel_nummer();
+		artikel.setArtikel_omschrijving("Tafel");
+		artikel.setArtikel_prijs(259.95);
+		ArtikelDaoHibernate artikelDao = new ArtikelDaoHibernate();
+		artikelDao.update(artikel);
+		
+		List<Artikel> artikelen = artikelDao.findAll();
+		for (Artikel a : artikelen) {
+			System.out.println(a);
+		}
+		System.out.println(artikelDao.findByID(2));
+		
+		Account account = new Account();
+		account.setAccount_id(1);
+		account.setAccount_naam("bleh");
+		account.setCreate_datum();
+		account.setKlant(klant);
+		AccountDaoHibernate accountDao = new AccountDaoHibernate();
+		accountDao.update(account);
 	}
 
 }

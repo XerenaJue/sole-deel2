@@ -17,9 +17,9 @@ public class AdresDao {
 	}
 
 	public void update(Adres adres) {
-		util.openCurrentSession();
+		util.openSessionWithTransaction();
 		util.getCurrentSession().update(adres);
-		util.closeCurrentSession();
+		util.closeSessionWithTransaction();
 		
 	}
 
@@ -38,9 +38,9 @@ public class AdresDao {
 	}
 
 	public void delete(Adres adres) {
-		util.openCurrentSession();
+		util.openSessionWithTransaction();
 		util.getCurrentSession().delete(adres);
-		util.closeCurrentSession();
+		util.closeSessionWithTransaction();
 		
 	}
 

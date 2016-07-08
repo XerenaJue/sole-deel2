@@ -17,9 +17,9 @@ public class BetaalwijzeDaoHibernate {
 	}
 
 	public void update(Betaalwijze betaalwijze) {
-		util.openCurrentSession();
+		util.openSessionWithTransaction();
 		util.getCurrentSession().update(betaalwijze);
-		util.closeCurrentSession();
+		util.closeSessionWithTransaction();
 		
 	}
 
@@ -38,9 +38,9 @@ public class BetaalwijzeDaoHibernate {
 	}
 
 	public void delete(Betaalwijze betaalwijze) {
-		util.openCurrentSession();
+		util.openSessionWithTransaction();
 		util.getCurrentSession().delete(betaalwijze);
-		util.closeCurrentSession();
+		util.closeSessionWithTransaction();
 		
 	}
 

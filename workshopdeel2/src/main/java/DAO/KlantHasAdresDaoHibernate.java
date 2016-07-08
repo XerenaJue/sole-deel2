@@ -17,9 +17,9 @@ public class KlantHasAdresDaoHibernate {
 	}
 
 	public void update(KlantHasAdres klantAdres) {
-		util.openCurrentSession();
+		util.openSessionWithTransaction();
 		util.getCurrentSession().update(klantAdres);
-		util.closeCurrentSession();
+		util.closeSessionWithTransaction();
 
 	}
 
@@ -39,9 +39,9 @@ public class KlantHasAdresDaoHibernate {
 	}
 
 	public void delete(KlantHasAdres klantAdres) {
-		util.openCurrentSession();
+		util.openSessionWithTransaction();
 		util.getCurrentSession().delete(klantAdres);
-		util.closeCurrentSession();
+		util.closeSessionWithTransaction();
 
 	}
 

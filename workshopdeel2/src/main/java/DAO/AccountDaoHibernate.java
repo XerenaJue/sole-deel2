@@ -15,19 +15,19 @@ public class AccountDaoHibernate {
 		util.closeCurrentSession();
 	}
 	public void update(Account account) {
-		util.openCurrentSession();
+		util.openSessionWithTransaction();
 		util.getCurrentSession().update(account);
-		util.closeCurrentSession();
+		util.closeSessionWithTransaction();
 	}
 	public void delete(Account account) {
-		util.openCurrentSession();
+		util.openSessionWithTransaction();
 		util.getCurrentSession().delete(account);
-		util.closeCurrentSession();
+		util.closeSessionWithTransaction();
 	}
 	public Account findById(long id) {
 		util.openCurrentSession();
 		Account account = (Account)util.getCurrentSession().get(Account.class, id);
-		util.closeCurrentSession();
+		util.closeSessionWithTransaction();
 		return account;
 	}
 	public List<Account> findAll() {

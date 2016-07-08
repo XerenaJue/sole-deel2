@@ -17,9 +17,9 @@ public class BetalingDaoHibernate {
 	}
 
 	public void update(Betaling betaling) {
-		util.openCurrentSession();
+		util.openSessionWithTransaction();
 		util.getCurrentSession().update(betaling);
-		util.closeCurrentSession();
+		util.closeSessionWithTransaction();
 		
 	}
 
@@ -38,9 +38,9 @@ public class BetalingDaoHibernate {
 	}
 
 	public void delete(Betaling betaling) {
-		util.openCurrentSession();
+		util.openSessionWithTransaction();
 		util.getCurrentSession().delete(betaling);
-		util.closeCurrentSession();
+		util.closeSessionWithTransaction();
 		
 	}
 
