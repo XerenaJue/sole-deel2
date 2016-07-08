@@ -26,7 +26,7 @@ public class Test {
 		klant.setTussenvoegsel("de");
 		klant.setEmail("gmaar@gmail.com");
 		
-		klantService.update(klant);
+		klantService.save(klant);
 		
 		List<Klant> klanten = klantService.findAll();
 		
@@ -42,6 +42,11 @@ public class Test {
 		artikel.setArtikel_prijs(259.95);
 		ArtikelDaoHibernate artikelDao = new ArtikelDaoHibernate();
 		artikelDao.update(artikel);
+		Artikel artikel2 = new Artikel();
+		artikel2.setArtikel_nummer();
+		artikel2.setArtikel_omschrijving("Bed");
+		artikel2.setArtikel_prijs(399.00);
+		artikelDao.save(artikel2);
 		
 		List<Artikel> artikelen = artikelDao.findAll();
 		for (Artikel a : artikelen) {
